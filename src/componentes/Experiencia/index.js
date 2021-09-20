@@ -1,5 +1,15 @@
 import "./style.css";
-const Experiencia = ({ id, titulo, localidad, n_plazas, precio, votos }) => {
+const Experiencia = ({
+  id,
+  titulo,
+  localidad,
+  n_plazas,
+  f_inicio,
+  f_fin,
+  precio,
+  votos,
+  fotos,
+}) => {
   return (
     <div className="experiencia">
       <div className="experiencia_info_usuario"></div>

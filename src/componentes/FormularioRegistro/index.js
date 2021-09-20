@@ -22,6 +22,9 @@ const FormularioRegistro = () => {
     if (res.ok) {
       setError("");
       setEcho(true);
+    } else {
+      const error = await res.json();
+      setError(error.message);
     }
   };
 
