@@ -17,11 +17,15 @@ const useExperiencias = () => {
       if (res.ok) {
         const body = await res.json();
 
+        // accedemos a data que es la lista de experiencias
+
         setExperiencias(body.data);
       }
     };
     fetchExperiencias();
   }, []);
+
+  //retornamos un array con las experiencias
 
   return [experiencias, setExperiencias];
 };
