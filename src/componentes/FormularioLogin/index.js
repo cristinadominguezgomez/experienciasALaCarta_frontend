@@ -1,14 +1,20 @@
 import "./style.css";
 import { useState } from "react";
-// para redirigir a los usuarios a las experiencias usamos useHistory
-import { useHistory } from "react-router";
+// para redirigir a los usuarios a las experiencias usamos useRedirect
+import { Redirect } from "react-router-dom";
+
 import ErrorForm from "../ErrorForm";
 // para el login (usuario registrado y validado) tenemos 2 imputs para el email y la password
+
+// para el control del token importamos la funcion para usar el contexto que nos devuelve el token
+// nos lo devuelve en un objeto json dentro de data está el token
+import { useUsuarioTokenContexto } from "../../contexts/UsuarioTokenContexto";
 const FormularioLogin = () => {
   const [email, setEmail] = useState("");
   const [contraseña, setContraseña] = useState("");
   const [error, setError] = useState("");
-  const history = useHistory();
+
+  const [token, setToken] = useUsuarioTokenContexto();
 
   // para hacer la logica del formulario le ponemos un onSubmit, es decir cuando el formulario
   // se envie ejecutamos la funcion login que es asyncrona y va a recibir un evento y si la respuesta es ok
@@ -25,16 +31,22 @@ const FormularioLogin = () => {
         body: JSON.stringify({ email, contraseña }),
       }
     );
+
     if (res.ok) {
       setError("");
-      // si el login es ok redirigimos a experiencias
-      history.push("/");
+      // para el control del token tengo que acceder al body.data.token
+      const body = await res.json();
+      setToken(body.data.token);
     } else {
       // accedo al body del error
       const error = await res.json();
       setError(error.message);
     }
   };
+  //console.log("token", token);
+  if (token) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>
@@ -69,3 +81,7 @@ const FormularioLogin = () => {
   );
 };
 export default FormularioLogin;
+
+// para guardar el token podemos elegir entre localStorage (aunque cierre sesion) ó sessionStorage (solo durante la sesion)
+// hacemos el hook que devuelve el token cada vez ue hay un cambio y en contexto en vez de usar el useState usamos nuestro
+// useSessionStorageToken
