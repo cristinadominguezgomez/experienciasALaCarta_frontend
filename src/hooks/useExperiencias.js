@@ -7,9 +7,6 @@ const useExperiencias = () => {
 
   useEffect(() => {
     const fetchExperiencias = async () => {
-      //console.log(process.env.REACT_APP_BACKEND_URL);
-      //console.log(`${process.env.REACT_APP_BACKEND_URL}/experiencias`);
-
       const res = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/experiencias`
       );

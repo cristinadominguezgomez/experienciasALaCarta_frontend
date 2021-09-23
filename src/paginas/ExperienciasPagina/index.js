@@ -8,7 +8,7 @@ import Experiencia from "../../componentes/Experiencia";
 
 const ExperienciasPagina = () => {
   const [experiencias] = useExperiencias();
-  console.log("experiencias", experiencias);
+  //console.log("experiencias", experiencias);
 
   return (
     <div className="pagina_experiencias">

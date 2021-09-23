@@ -8,9 +8,9 @@ const useSessionStorageToken = (key, defaultValue) => {
     // se obtiene el token que esta en formato texto por eso hay que parsearlo o se coge el estado inicial de vacio
     JSON.parse(sessionStorage.getItem(key)) || defaultValue
   );
-  console.log("value:", defaultValue);
+  //console.log("value:", defaultValue);
 
-  console.log("session Storage:", sessionStorage.getItem(key));
+  //console.log("session Storage:", sessionStorage.getItem(key));
   // useEffect lo ejecutamos cada vez que cambie el token, cada vez que recargamos la pagina
   useEffect(() => {
     // se almacena el token en formato texto
