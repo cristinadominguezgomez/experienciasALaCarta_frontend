@@ -10,7 +10,7 @@ const ExperienciaPagina = () => {
   // console.log("id", id);
   // hacemos un fetch a la experiencia en el hook useExperiencia y aqui lo importamos y lo usamos y le pasamos el id
   // para que me salgan las fotos tengo que hacer un map en el componente de la experiencia
-  // por si tardan en salir indico Cargando... o otra animacion
+  // mientras carga la pagina indico Cargando...
 
   const [experiencia] = useExperiencia(id);
   console.log("experiencia", experiencia);

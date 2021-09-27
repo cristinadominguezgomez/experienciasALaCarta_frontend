@@ -6,15 +6,13 @@ import "./style.css";
 import { useHistory } from "react-router";
 // instalo e importo el Carousel para las fotos
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
-const Experiencia = ({
+//import { Carousel } from "react-responsive-carousel";
+const ExperienciaSmall = ({
   id,
   titulo,
   descripcion,
   localidad,
   n_plazas,
-  f_inicio,
-  f_fin,
   precio,
   votos,
   fotos,
@@ -29,52 +27,58 @@ const Experiencia = ({
 
   return (
     <div
-      className="experiencia"
+      className="experienciaSmall"
       onClick={() => {
         history.push(`/experiencia/${id}`);
       }}
     >
       <div className="experiencia_info_usuario"></div>
       <div className="experiencia_info">
-        <p className="experiencia_titulo">{titulo}</p>
-        {votos && <p className="experiencia_votos">{votos}</p>}
-      </div>
-      <div className="experiencia_fotos">
-        {fotos.length > 0 ? (
-          <Carousel
-            infiniteLoop={true}
-            showStatus={false}
-            showIndicators={false}
-          >
-            {fotos.map((foto) => (
+        <div className="experiencia_fotos">
+          {fotos.length > 0 ? (
+            fotos.map((foto) => (
               <img
                 src={`${process.env.REACT_APP_BACKEND_URL}/fotos/${foto.foto}`}
                 key={foto.id}
                 alt="Foto de la experiencia"
               />
-            ))}
-          </Carousel>
-        ) : (
-          <p>No hay fotos</p>
-        )}
-      </div>
-      <div className="experiencia_datos">
-        <p className="experiencia_f_inicio">
-          {new Date(f_inicio).toLocaleDateString()}
-        </p>
-        <p className="experiencia_f_fin">
-          {new Date(f_fin).toLocaleDateString()}
-        </p>
+            ))
+          ) : (
+            <p>No hay fotos</p>
+          )}
+        </div>
+        <p className="experiencia_titulo">{titulo}</p>
         <p className="experiencia_localidad">{localidad}</p>
-        <p className="experiencia_plazas">{n_plazas}</p>
-        <p className="experiencia_descripcion">{descripcion}</p>
       </div>
-      <div className="experiencia_reservar">
-        <p className="experiencia_precio">{precio}</p>
-        <button>Reservar</button>
+      {/* <div className="experiencia_fotos">
+        {fotos.length > 0 ? (
+          <Carousel
+          infiniteLoop={true}
+          showStatus={false}
+          showIndicators={false}
+          >
+          {fotos.map((foto) => (
+            <img
+            src={`${process.env.REACT_APP_BACKEND_URL}/fotos/${foto.foto}`}
+            key={foto.id}
+            alt="Foto de la experiencia"
+            />
+            ))}
+            </Carousel>
+            ) : (
+              <p>No hay fotos</p>
+              )}
+            </div> */}
+      <div className="experiencia_datos">
+        <p className="experiencia_descripcion">{descripcion}</p>
+        <div className="experiencia_info_derecha">
+          {votos && <p className="experiencia_votos">{votos}</p>}
+          <p className="experiencia_plazas">{n_plazas}</p>
+          <p className="experiencia_precio">{precio}</p>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Experiencia;
+export default ExperienciaSmall;

@@ -7,6 +7,7 @@ import LoginPagina from "./paginas/LoginPagina";
 // para el control del token importamos nuestro provider personalizado y metemos toda nuestra aplicacion dentro de nuestro provider
 import { UsuarioTokenContextoProvider } from "./contexts/UsuarioTokenContexto";
 import ExperienciaPagina from "./paginas/ExperienciaPagina";
+import CrearExperienciaPagina from "./paginas/CrearExperienciaPagina";
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path="/experiencia/:id">
             <ExperienciaPagina />
+          </Route>
+          <Route path="/crear/experiencia">
+            <CrearExperienciaPagina />
           </Route>
         </Switch>
       </UsuarioTokenContextoProvider>

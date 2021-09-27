@@ -15,7 +15,7 @@ const UsuarioTokenContextoProvider = ({ children }) => {
   );
 };
 
-//creamos una funcion para llamar a este contexto en donde queramos / formulario de login
+//creamos una funcion para llamar a este contexto en donde queramos / formulario de login / nos devuelve el token
 const useUsuarioTokenContexto = () => {
   return useContext(UsuarioTokenContexto);
 };

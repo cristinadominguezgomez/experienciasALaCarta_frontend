@@ -1,11 +1,15 @@
 import "./style.css";
 import { Link } from "react-router-dom";
 
+// El Link to me lleva a la ruta que le indico
+
 const Cabecera = () => {
   return (
     <div className="app_cabecera">
       <p className="menu_cabecera">Buscador</p>
-      <h2 className="titulo_cabecera">Experiencias A La Carta</h2>
+      <Link className="titulo_cabecera" to="/">
+        Experiencias A La Carta
+      </Link>
       <Link className="link_cabecera" to="/login">
         Login
       </Link>
